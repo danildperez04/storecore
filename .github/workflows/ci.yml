@@ -36,7 +36,7 @@ jobs:
 
     steps:
       - name: Clonar el repositorio
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
       - name: Instalar pnpm
         uses: pnpm/action-setup@v4
@@ -97,7 +97,7 @@ jobs:
 
     steps:
       - name: Clonar el repositorio
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
       - name: Instalar pnpm
         uses: pnpm/action-setup@v4
