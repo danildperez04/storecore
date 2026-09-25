@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # ---------- Dependencias ----------
-FROM node:22-alpine AS deps
+FROM node:26-alpine AS deps
 WORKDIR /app
 RUN corepack enable
 COPY package.json pnpm-lock.yaml* pnpm-workspace.yaml ./
@@ -10,7 +10,7 @@ COPY frontend/package.json ./frontend/
 RUN pnpm install --frozen-lockfile --filter backend...
 
 # ---------- Build ----------
-FROM node:22-alpine AS build
+FROM node:26-alpine AS build
 WORKDIR /app
 RUN corepack enable
 COPY --from=deps /app/node_modules ./node_modules
@@ -21,7 +21,7 @@ RUN pnpm --filter backend build
 RUN pnpm --filter backend prune --prod
 
 # ---------- Producción ----------
-FROM node:22-alpine AS production
+FROM node:26-alpine AS production
 WORKDIR /app
 RUN corepack enable
 RUN apk add --no-cache dumb-init
