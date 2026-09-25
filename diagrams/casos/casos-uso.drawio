@@ -1,0 +1,121 @@
+<mxfile host="app.diagrams.net" modified="2026-09-25T12:00:00.000Z" agent="StoreCore" version="24.7.17" type="device">
+  <diagram id="storecore-usecases" name="Casos de uso">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="StoreCore — Casos de uso del sistema" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=22;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="480" y="20" width="700" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="actorDue" value="Dueño&#10;(Administrador)" style="shape=umlActor;whiteSpace=wrap;html=1;verticalLabelPosition=bottom;verticalAlign=top;align=center;fillColor=#1b5e20;strokeColor=#0d3d14;fontColor=#ffffff;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="60" y="380" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="actorCashier" value="Cajero" style="shape=umlActor;whiteSpace=wrap;html=1;verticalLabelPosition=bottom;verticalAlign=top;align=center;fillColor=#1b5e20;strokeColor=#0d3d14;fontColor=#ffffff;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1410" y="380" width="40" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ucAuth" value="Iniciar sesión" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="330" y="80" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ucUsers" value="Gestionar usuarios y&#10;sucursales" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="510" y="80" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ucCatalog" value="Administrar catálogo&#10;(categorías, proveedores,&#10;productos)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="710" y="70" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ucSearch" value="Buscar productos" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#f9a825;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="930" y="80" width="140" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ucMovement" value="Registrar movimientos&#10;de stock&#10;(entrada, ajuste, merma)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="300" y="250" width="190" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ucStock" value="Consultar inventario&#10;por sucursal" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#f9a825;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="530" y="250" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ucLowStock" value="Recibir alertas de&#10;stock bajo" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#f9a825;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="730" y="250" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ucKardex" value="Consultar kardex&#10;de un producto" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#f9a825;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="930" y="250" width="160" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ucPurchase" value="Administrar órdenes&#10;de compra" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="270" y="420" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ucSuggestion" value="Consultar sugerencias&#10;de reposición" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="270" y="540" width="170" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ucPos" value="Registrar venta&#10;en punto de venta" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1565c0;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1140" y="250" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ucDiscount" value="Aplicar descuento" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1565c0;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1140" y="360" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ucTicket" value="Generar e imprimir ticket" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1565c0;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1140" y="460" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ucCash" value="Abrir y cerrar caja&#10;con arqueo" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1565c0;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1140" y="560" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ucCancel" value="Anular venta" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#c2185b;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="870" y="560" width="170" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ucCustomers" value="Administrar clientes" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="620" y="560" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ucPayment" value="Registrar abono" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="620" y="660" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ucStatement" value="Consultar estado de cuenta" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="620" y="760" width="200" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ucDashboard" value="Ver dashboard" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ede7f6;strokeColor=#5e35b1;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="270" y="680" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ucReports" value="Generar reportes" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ede7f6;strokeColor=#5e35b1;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="270" y="780" width="170" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=none;strokeColor=#1b5e20;strokeWidth=1.5" edge="1" parent="1" source="actorDue" target="ucAuth"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=none;strokeColor=#1b5e20;strokeWidth=1.5" edge="1" parent="1" source="actorDue" target="ucUsers"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=none;strokeColor=#1b5e20;strokeWidth=1.5" edge="1" parent="1" source="actorDue" target="ucCatalog"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=none;strokeColor=#1b5e20;strokeWidth=1.5" edge="1" parent="1" source="actorDue" target="ucMovement"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=none;strokeColor=#1b5e20;strokeWidth=1.5" edge="1" parent="1" source="actorDue" target="ucPurchase"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=none;strokeColor=#1b5e20;strokeWidth=1.5" edge="1" parent="1" source="actorDue" target="ucSuggestion"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=none;strokeColor=#1b5e20;strokeWidth=1.5" edge="1" parent="1" source="actorDue" target="ucCustomers"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=none;strokeColor=#1b5e20;strokeWidth=1.5" edge="1" parent="1" source="actorDue" target="ucPayment"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=none;strokeColor=#1b5e20;strokeWidth=1.5" edge="1" parent="1" source="actorDue" target="ucStatement"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=none;strokeColor=#1b5e20;strokeWidth=1.5" edge="1" parent="1" source="actorDue" target="ucDashboard"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=none;strokeColor=#1b5e20;strokeWidth=1.5" edge="1" parent="1" source="actorDue" target="ucReports"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e12" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=none;strokeColor=#1b5e20;strokeWidth=1.5" edge="1" parent="1" source="actorDue" target="ucCancel"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e13" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=none;strokeColor=#1b5e20;strokeWidth=1.5" edge="1" parent="1" source="actorDue" target="ucKardex"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="e20" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=none;strokeColor=#1565c0;strokeWidth=1.5" edge="1" parent="1" source="actorCashier" target="ucAuth"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e21" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=none;strokeColor=#1565c0;strokeWidth=1.5" edge="1" parent="1" source="actorCashier" target="ucSearch"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e22" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=none;strokeColor=#1565c0;strokeWidth=1.5" edge="1" parent="1" source="actorCashier" target="ucStock"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e23" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=none;strokeColor=#1565c0;strokeWidth=1.5" edge="1" parent="1" source="actorCashier" target="ucLowStock"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e24" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=none;strokeColor=#1565c0;strokeWidth=2" edge="1" parent="1" source="actorCashier" target="ucPos"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e25" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=none;strokeColor=#1565c0;strokeWidth=1.5" edge="1" parent="1" source="actorCashier" target="ucDiscount"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e26" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=none;strokeColor=#1565c0;strokeWidth=1.5" edge="1" parent="1" source="actorCashier" target="ucTicket"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e27" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=none;strokeColor=#1565c0;strokeWidth=1.5" edge="1" parent="1" source="actorCashier" target="ucCash"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="r1" value="«extend»" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=open;dashed=1;strokeColor=#5e35b1;fontSize=10" edge="1" parent="1" source="ucPos" target="ucDiscount"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r2" value="«include»" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=open;dashed=1;strokeColor=#5e35b1;fontSize=10" edge="1" parent="1" source="ucPos" target="ucTicket"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r3" value="«extend»" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=open;dashed=1;strokeColor=#5e35b1;fontSize=10" edge="1" parent="1" source="ucCancel" target="ucTicket"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r4" value="«include»" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=open;dashed=1;strokeColor=#5e35b1;fontSize=10" edge="1" parent="1" source="ucMovement" target="ucKardex"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r5" value="«extend»" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=open;dashed=1;strokeColor=#5e35b1;fontSize=10" edge="1" parent="1" source="ucLowStock" target="ucSuggestion"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="legend" value="Leyenda:  verde = acciones del Dueño (ADMIN)   ·   azul = acciones del Cajero (CASHIER)   ·   morado = reportes&#10;&#10;Casos marcados en negrita son los centrales del MVP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fafafa;strokeColor=#bdbdbd;align=left;spacingLeft=10;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1000" y="680" width="330" height="90" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

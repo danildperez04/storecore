@@ -1,0 +1,19 @@
+packages:
+  - 'backend'
+  - 'frontend'
+
+# pnpm 12 exige declarar qué dependencias pueden ejecutar scripts de build.
+# Sin esto, bcrypt y @swc/core no compilan su binario nativo.
+allowBuilds:
+  '@parcel/watcher': true
+  '@scarf/scarf': true
+  '@swc/core': true
+  bcrypt: true
+  unrs-resolver: true
+
+# pnpm 12 aplica por defecto una ventana de espera de 24 h (minimumReleaseAge)
+# antes de permitir un release nuevo, como protección contra paquetes
+# maliciosos publicados horas antes. El proyecto sigue deliberadamente las
+# últimas versiones disponibles, así que esa ventana se reduce a 0.
+minimumReleaseAge: 0
+minimumReleaseAgeStrict: false

@@ -1,0 +1,57 @@
+{
+  "name": "storecore",
+  "version": "0.1.0",
+  "description": "Sistema de gestión para tiendas de abarrotes: catálogo, inventario, punto de venta, compras, crédito, reportes y cortes de caja",
+  "private": true,
+  "license": "MIT",
+  "author": "Danild Pérez <danildperez04>",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19.0",
+    "pnpm": ">=12.0.0"
+  },
+  "packageManager": "pnpm@12.6.0",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "pnpm --parallel --filter backend --filter frontend dev",
+    "dev:backend": "pnpm --filter backend dev",
+    "dev:frontend": "pnpm --filter frontend dev",
+    "build": "pnpm --filter backend build && pnpm --filter frontend build",
+    "lint": "pnpm --filter backend lint && pnpm --filter frontend lint",
+    "lint:fix": "pnpm --filter backend lint:fix && pnpm --filter frontend lint:fix",
+    "typecheck": "pnpm --filter backend typecheck && pnpm --filter frontend typecheck",
+    "test": "pnpm --filter backend test && pnpm --filter frontend test",
+    "test:backend": "pnpm --filter backend test",
+    "test:frontend": "pnpm --filter frontend test",
+    "test:cov": "pnpm --filter backend test:cov",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md,yml,yaml}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,css,md,yml,yaml}\"",
+    "commitlint": "commitlint --edit",
+    "prepare": "husky",
+    "up": "docker compose -f docker-compose.prod.yml up -d --build",
+    "down": "docker compose -f docker-compose.prod.yml down",
+    "logs": "docker compose -f docker-compose.prod.yml logs -f",
+    "backup": "./scripts/backup.sh",
+    "version:all": "npm version --workspaces --include-workspace-root --no-git-tag-version"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,css,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^21.2.3",
+    "@commitlint/config-conventional": "^21.2.3",
+    "eslint": "^10.11.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.5.1",
+    "prettier": "^3.9.9"
+  }
+}

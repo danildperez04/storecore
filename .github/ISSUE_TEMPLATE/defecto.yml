@@ -1,0 +1,83 @@
+name: Defecto
+description: Reporta un comportamiento incorrecto
+title: '[Bug] '
+labels: ['defecto']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Qué pasa
+
+        Describe el comportamiento incorrecto.
+
+  - type: textarea
+    id: pasos
+    attributes:
+      label: Pasos para reproducirlo
+      description: Pasos numerados,starting from the beginning
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: textarea
+    id: esperado
+    attributes:
+      label: Resultado esperado
+      description: Qué debería ocurrir
+    validations:
+      required: true
+
+  - type: textarea
+    id: obtenido
+    attributes:
+      label: Resultado obtenido
+      description: Qué ocurre realmente
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severidad
+    attributes:
+      label: Severidad
+      description: Elige la que corresponda al impacto en el negocio
+      options:
+        - Crítica — el sistema no funciona o se pierden datos
+        - Alta — una función principal falla sin alternativa
+        - Media — hay una forma de trabajar alrededor
+        - Baja — cosmético o de conveniencia
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Versión
+      placeholder: 0.1.0
+    validations:
+      required: true
+
+  - type: input
+    id: navegador
+    attributes:
+      label: Navegador y sistema operativo
+      placeholder: Chrome 141, Windows 11
+
+  - type: dropdown
+    id: rol
+    attributes:
+      label: Rol del usuario que reportó
+      options:
+        - ADMIN
+        - CASHIER
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidencia
+    attributes:
+      label: Evidencia
+      description: Logs, capturas o identificadores de venta o producto
+      render: text

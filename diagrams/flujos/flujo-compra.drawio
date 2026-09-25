@@ -1,0 +1,65 @@
+<mxfile host="app.diagrams.net" modified="2026-09-25T12:00:00.000Z" agent="StoreCore" version="24.7.17" type="device">
+  <diagram id="flujo-compra" name="Flujo de compra">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="t" value="StoreCore — Flujo de compra a proveedor y recepción" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=20;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="20" width="780" height="34" as="geometry" />
+        </mxCell>
+
+        <mxCell id="d1" value="Ve productos&#10;bajo mínimo&#10;y sugerencias&#10;de reposición" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="d2" value="Crea la orden de compra&#10;estado DRAFT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="320" y="120" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d3" value="Marca como enviada&#10;estado ORDERED" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="560" y="120" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d4" value="Entrega al proveedor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#424242;fontColor=#ffffff;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="800" y="120" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d5" value="Llega la mercancía" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#424242;fontColor=#ffffff;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1040" y="120" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d6" value="Registra la recepción&#10;total o parcial" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#f9a825;fontColor=#e65100;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1280" y="110" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="d7" value="Stock actualizado&#10;movimiento PURCHASE&#10;orden en RECEIVED" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;fontColor=#1b5e20;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1280" y="270" width="180" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="noteA" value="RF-30 a RF-33&#10;&#10;La orden tiene 4 estados:&#10;DRAFT → ORDERED → RECEIVED&#10;CANCELLED desde DRAFT u ORDERED&#10;&#10;RF-32: la recepción es total o&#10;parcial. Si se pidieron 100 y&#10;llegaron 80, se registra 80 como&#10;received_quantity y la diferencia&#10;queda visible." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffde7;strokeColor=#f9a825;align=left;spacingLeft=10;verticalAlign=top;spacingTop=8;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="80" y="440" width="300" height="200" as="geometry" />
+        </mxCell>
+
+        <mxCell id="noteB" value="RN-5 / RNF-03&#10;&#10;La recepción corre dentro de UNA&#10;transacción:&#10;&#10;1. Bloquea product_stock&#10;2. Suma la cantidad recibida&#10;3. Inserta el movimiento&#10;   de tipo PURCHASE&#10;4. Actualiza received_quantity&#10;5. Marca la orden RECEIVED&#10;6. Commit&#10;&#10;Si algo falla, no se suma&#10;nada: el stock no cambia." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;align=left;spacingLeft=10;verticalAlign=top;spacingTop=8;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="440" y="440" width="320" height="240" as="geometry" />
+        </mxCell>
+
+        <mxCell id="noteC" value="Cierre del ciclo&#10;&#10;Al recibir, el sistema también&#10;actualiza el purchase_price del&#10;producto con el costo real de esa&#10;orden, para que el reporte de&#10;márgenes (RF-47) refleje el costo&#10;verdadero, no uno viejo.&#10;&#10;Este es el momento en que el&#10;inventario deja de estar desactualizado." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1565c0;align=left;spacingLeft=10;verticalAlign=top;spacingTop=8;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="820" y="440" width="300" height="220" as="geometry" />
+        </mxCell>
+
+        <mxCell id="f1" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;strokeColor=#2e7d32;endArrow=block" edge="1" parent="1" source="d1" target="d2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f2" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;strokeColor=#2e7d32;endArrow=block" edge="1" parent="1" source="d2" target="d3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f3" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;strokeColor=#2e7d32;endArrow=block" edge="1" parent="1" source="d3" target="d4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f4" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;strokeColor=#424242;endArrow=block" edge="1" parent="1" source="d4" target="d5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f5" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;strokeColor=#f9a825;endArrow=block" edge="1" parent="1" source="d5" target="d6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f6" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;strokeColor=#1b5e20;endArrow=block" edge="1" parent="1" source="d6" target="d7"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="d8" value="Cancela la orden&#10;estado CANCELLED" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;fontColor=#b71c1c;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="640" y="270" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="f7" value="no se recibirá" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;strokeColor=#c62828;dashed=1;endArrow=block;fontSize=10" edge="1" parent="1" source="d3" target="d8"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="d9" value="Sin cambio de stock" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eeeeee;strokeColor=#9e9e9e;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="880" y="270" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="f8" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;strokeColor=#9e9e9e;endArrow=block" edge="1" parent="1" source="d8" target="d9"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

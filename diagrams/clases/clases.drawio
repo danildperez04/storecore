@@ -1,0 +1,98 @@
+<mxfile host="app.diagrams.net" modified="2026-09-25T12:00:00.000Z" agent="StoreCore" version="24.7.17" type="device">
+  <diagram id="storecore-clases" name="Clases">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2339" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="StoreCore — Diagrama de clases (14 entidades)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=24;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="800" y="20" width="740" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="eBranch" value="Branch&#10;&#10;- id: number&#10;- code: string&#10;- name: string&#10;- address?: string&#10;- phone?: string&#10;- isActive: boolean&#10;- createdAt: Date&#10;- updatedAt: Date" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=4" vertex="1" parent="1">
+          <mxGeometry x="900" y="100" width="220" height="160" as="geometry" />
+        </mxCell>
+
+        <mxCell id="eUser" value="User&#10;&#10;- id: number&#10;- username: string&#10;- email: string&#10;- passwordHash: string&#10;- fullName: string&#10;- role: UserRole&#10;- branch?: Branch&#10;- isActive: boolean&#10;- lastLoginAt?: Date&#10;- createdAt: Date&#10;- updatedAt: Date" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=4" vertex="1" parent="1">
+          <mxGeometry x="620" y="100" width="220" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="eCategory" value="Category&#10;&#10;- id: number&#10;- name: string&#10;- slug: string&#10;- parent?: Category&#10;- icon?: string&#10;- isActive: boolean&#10;- createdAt: Date&#10;- updatedAt: Date" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=4" vertex="1" parent="1">
+          <mxGeometry x="330" y="100" width="220" height="160" as="geometry" />
+        </mxCell>
+
+        <mxCell id="eSupplier" value="Supplier&#10;&#10;- id: number&#10;- name: string&#10;- contactName?: string&#10;- phone?: string&#10;- email?: string&#10;- address?: string&#10;- notes?: string&#10;- isActive: boolean&#10;- createdAt: Date&#10;- updatedAt: Date" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=4" vertex="1" parent="1">
+          <mxGeometry x="120" y="360" width="220" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="eProduct" value="Product&#10;&#10;- id: number&#10;- sku: string&#10;- barcode?: string&#10;- name: string&#10;- description?: string&#10;- category: Category&#10;- supplier?: Supplier&#10;- unit: ProductUnit&#10;- purchasePrice: number&#10;- salePrice: number&#10;- minStock: number&#10;- isActive: boolean&#10;- createdAt: Date&#10;- updatedAt: Date" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#e65100;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=4;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="330" y="360" width="240" height="220" as="geometry" />
+        </mxCell>
+
+        <mxCell id="eProductStock" value="ProductStock&#10;&#10;- id: number&#10;- product: Product&#10;- branch: Branch&#10;- quantity: number&#10;&#10;CHECK quantity &gt;= 0&#10;UNIQUE (product, branch)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=4;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="620" y="360" width="240" height="160" as="geometry" />
+        </mxCell>
+
+        <mxCell id="eStockMovement" value="StockMovement&#10;&#10;- id: number&#10;- product: Product&#10;- branch: Branch&#10;- type: StockMovementType&#10;- quantity: number (&gt; 0)&#10;- reason?: string&#10;- reference?: string&#10;- previousQuantity: number&#10;- newQuantity: number&#10;- user: User&#10;- createdAt: Date&#10;&#10;APPEND-ONLY (libro mayor)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=4;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="900" y="360" width="250" height="230" as="geometry" />
+        </mxCell>
+
+        <mxCell id="eSupplierOrder" value="SupplierOrder&#10;&#10;- id: number&#10;- orderNumber: string&#10;- supplier: Supplier&#10;- branch: Branch&#10;- status: SupplierOrderStatus&#10;- orderedAt?: Date&#10;- receivedAt?: Date&#10;- subtotal: number&#10;- total: number&#10;- notes?: string&#10;- user: User&#10;- createdAt: Date&#10;- updatedAt: Date" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=4" vertex="1" parent="1">
+          <mxGeometry x="120" y="620" width="250" height="210" as="geometry" />
+        </mxCell>
+
+        <mxCell id="eSupplierOrderItem" value="SupplierOrderItem&#10;&#10;- id: number&#10;- order: SupplierOrder&#10;- product: Product&#10;- quantity: number (&gt; 0)&#10;- receivedQuantity: number&#10;- unitCost: number&#10;- subtotal: number" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=4" vertex="1" parent="1">
+          <mxGeometry x="120" y="880" width="250" height="150" as="geometry" />
+        </mxCell>
+
+        <mxCell id="eCustomer" value="Customer&#10;&#10;- id: number&#10;- name: string&#10;- phone?: string&#10;- address?: string&#10;- creditLimit: number&#10;- notes?: string&#10;- isActive: boolean&#10;- createdAt: Date&#10;- updatedAt: Date&#10;&#10;balance es DERIVADO&#10;(ver CustomerTransaction)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#6a1b9a;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=4" vertex="1" parent="1">
+          <mxGeometry x="450" y="640" width="240" height="200" as="geometry" />
+        </mxCell>
+
+        <mxCell id="eCustomerTx" value="CustomerTransaction&#10;&#10;- id: number&#10;- customer: Customer&#10;- type: CustomerTransactionType&#10;- amount: number (&gt; 0)&#10;- sale?: Sale&#10;- user: User&#10;- notes?: string&#10;- createdAt: Date" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#6a1b9a;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=4" vertex="1" parent="1">
+          <mxGeometry x="450" y="890" width="250" height="160" as="geometry" />
+        </mxCell>
+
+        <mxCell id="eCashShift" value="CashShift&#10;&#10;- id: number&#10;- branch: Branch&#10;- user: User&#10;- status: CashShiftStatus&#10;- openingAmount: number&#10;- closingAmount?: number&#10;- expectedAmount?: number&#10;- difference?: number&#10;- salesCash: number&#10;- salesCard: number&#10;- salesTransfer: number&#10;- salesTotal: number&#10;- openedAt: Date&#10;- closedAt?: Date&#10;&#10;UNIQUE (branch) WHERE status=OPEN" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#0277bd;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=4" vertex="1" parent="1">
+          <mxGeometry x="780" y="660" width="250" height="250" as="geometry" />
+        </mxCell>
+
+        <mxCell id="eSale" value="Sale&#10;&#10;- id: number&#10;- saleNumber: string&#10;- branch: Branch&#10;- user: User&#10;- customer?: Customer&#10;- cashShift?: CashShift&#10;- status: SaleStatus&#10;- paymentMethod: PaymentMethod&#10;- subtotal: number&#10;- discount: number&#10;- total: number&#10;- amountReceived?: number&#10;- changeGiven?: number&#10;- cancelledAt?: Date&#10;- cancelledBy?: User&#10;- cancellationReason?: string&#10;- createdAt: Date&#10;&#10;UNIQUE (branch, saleNumber)&#10;CHECK total = subtotal - discount" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1565c0;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=4;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1200" y="360" width="270" height="270" as="geometry" />
+        </mxCell>
+
+        <mxCell id="eSaleItem" value="SaleItem&#10;&#10;- id: number&#10;- sale: Sale&#10;- product: Product&#10;- quantity: number (&gt; 0)&#10;- unitPrice: number&#10;- discount: number&#10;- subtotal: number&#10;- costPrice: number&#10;&#10;unitPrice y costPrice&#10;CONGELADOS al vender" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1565c0;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=4;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1200" y="680" width="240" height="200" as="geometry" />
+        </mxCell>
+
+        <mxCell id="r01" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=ERmany;fontSize=10;strokeColor=#616161" edge="1" parent="1" source="eBranch" target="eUser"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r02" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=ERmany;fontSize=10;strokeColor=#616161" edge="1" parent="1" source="eBranch" target="eProductStock"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r03" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=ERmany;fontSize=10;strokeColor=#616161" edge="1" parent="1" source="eBranch" target="eStockMovement"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r04" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=ERmany;fontSize=10;strokeColor=#616161" edge="1" parent="1" source="eBranch" target="eCashShift"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r05" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=ERmany;fontSize=10;strokeColor=#616161" edge="1" parent="1" source="eBranch" target="eSale"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r06" value="1 : N (self)" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=ERmany;fontSize=10;strokeColor=#616161" edge="1" parent="1" source="eCategory" target="eCategory"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r07" value="N : 1" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;startArrow=ERmany;fontSize=10;strokeColor=#616161" edge="1" parent="1" source="eProduct" target="eCategory"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r08" value="N : 0..1" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;startArrow=ERmany;fontSize=10;strokeColor=#616161" edge="1" parent="1" source="eProduct" target="eSupplier"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r09" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=ERmany;fontSize=10;strokeColor=#616161" edge="1" parent="1" source="eProduct" target="eProductStock"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r10" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=ERmany;fontSize=10;strokeColor=#616161" edge="1" parent="1" source="eProduct" target="eStockMovement"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r11" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=ERmany;fontSize=10;strokeColor=#616161" edge="1" parent="1" source="eProduct" target="eSupplierOrderItem"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r12" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=ERmany;fontSize=10;strokeColor=#616161" edge="1" parent="1" source="eProduct" target="eSaleItem"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r13" value="N : 1" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;startArrow=ERmany;fontSize=10;strokeColor=#616161" edge="1" parent="1" source="eUser" target="eStockMovement"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r14" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=ERmany;fontSize=10;strokeColor=#616161" edge="1" parent="1" source="eSupplier" target="eSupplierOrder"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r15" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=ERmany;fontSize=10;strokeColor=#616161" edge="1" parent="1" source="eSupplierOrder" target="eSupplierOrderItem"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r16" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=ERmany;fontSize=10;strokeColor=#616161" edge="1" parent="1" source="eCustomer" target="eCustomerTx"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r17" value="1 : 0..1" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=ERmany;fontSize=10;strokeColor=#616161" edge="1" parent="1" source="eCustomer" target="eSale"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r18" value="0..1 : 1" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;startArrow=ERmany;fontSize=10;strokeColor=#616161" edge="1" parent="1" source="eCustomerTx" target="eSale"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r19" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=ERmany;fontSize=10;strokeColor=#616161" edge="1" parent="1" source="eSale" target="eSaleItem"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r20" value="0..1 : 1" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;startArrow=ERmany;fontSize=10;strokeColor=#616161" edge="1" parent="1" source="eSale" target="eCashShift"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r21" value="1 : 0..1" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=ERmany;fontSize=10;strokeColor=#616161" edge="1" parent="1" source="eUser" target="eCashShift"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r22" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=1;endArrow=ERmany;fontSize=10;strokeColor=#616161" edge="1" parent="1" source="eUser" target="eSupplierOrder"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="note" value="Convenciones&#10;&#10;· snake_case en tablas y columnas (inglés, singular)&#10;· camelCase en propiedades de entidad&#10;· Todo monto: numeric(12,2)&#10;· Toda tabla: created_at, updated_at&#10;· Entidades de negocio: borrado lógico (is_active)&#10;&#10;Claves del diseño&#10;&#10;· Stock nunca negativo: CHECK en BD + transacción&#10;· Stock solo cambia vía StockMovement (append-only)&#10;· Saldo de cliente y total de venta: DERIVADOS&#10;· Precio y costo congelados en SaleItem" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fafafa;strokeColor=#9e9e9e;align=left;spacingLeft=12;verticalAlign=top;spacingTop=8;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1500" y="360" width="340" height="290" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

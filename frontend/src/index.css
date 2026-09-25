@@ -1,0 +1,46 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Verde oscuro primario: evoca abarrotes y mantiene alto el contraste. */
+  --color-brand-50: oklch(0.97 0.02 145);
+  --color-brand-100: oklch(0.93 0.05 145);
+  --color-brand-200: oklch(0.87 0.09 145);
+  --color-brand-300: oklch(0.78 0.13 145);
+  --color-brand-400: oklch(0.67 0.16 145);
+  --color-brand-500: oklch(0.56 0.17 145);
+  --color-brand-600: oklch(0.48 0.15 145);
+  --color-brand-700: oklch(0.4 0.12 145);
+  --color-brand-800: oklch(0.33 0.09 145);
+  --color-brand-900: oklch(0.27 0.07 145);
+  --color-brand-950: oklch(0.18 0.05 145);
+
+  /* Ambar para alertas de stock bajo. */
+  --color-alerta-400: oklch(0.82 0.16 75);
+  --color-alerta-500: oklch(0.75 0.16 70);
+  --color-alerta-600: oklch(0.66 0.15 62);
+
+  /* Rojo solo para stock critico y errores (RNF-12). */
+  --color-critico-500: oklch(0.58 0.21 27);
+  --color-critico-600: oklch(0.51 0.2 27);
+}
+
+:root {
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-neutral-50);
+  color: var(--color-neutral-900);
+}

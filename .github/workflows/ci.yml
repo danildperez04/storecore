@@ -1,0 +1,129 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [develop, main]
+  push:
+    branches: [develop, main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: '22'
+  PNPM_VERSION: '12.6.0'
+
+jobs:
+  backend:
+    name: Backend (lint · build · test)
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: storecore_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v5
+
+      - name: Instalar pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - name: Instalar dependencias
+        run: pnpm install --frozen-lockfile
+
+      - name: Preparar el backend
+        run: |
+          cp backend/.env.example backend/.env
+          node -e "
+            const fs=require('fs');
+            let s=fs.readFileSync('backend/.env','utf8');
+            s=s.replace('DATABASE_HOST=localhost','DATABASE_HOST=localhost')
+               .replace('DATABASE_NAME=storecore','DATABASE_NAME=storecore_test')
+               .replace('DATABASE_USER=storecore','DATABASE_USER=postgres')
+               .replace('DATABASE_PASSWORD=cambiame_en_produccion','DATABASE_PASSWORD=postgres')
+               .replace('JWT_SECRET=cambiame_por_un_secreto_aleatorio_de_64_caracteres','JWT_SECRET=ci-secret-for-tests-only-not-for-production')
+               .replace('DATABASE_SYNCHRONIZE=false','DATABASE_SYNCHRONIZE=false')
+               .replace('DATABASE_LOGGING=false','DATABASE_LOGGING=false');
+            fs.writeFileSync('backend/.env',s);
+          "
+
+      - name: Lint
+        run: pnpm --filter backend lint
+
+      - name: Typecheck
+        run: pnpm --filter backend typecheck
+
+      - name: Build
+        run: pnpm --filter backend build
+
+      - name: Aplicar migraciones
+        run: pnpm --filter backend migration:run
+
+      - name: Pruebas
+        run: pnpm --filter backend test:cov
+
+      - name: Subir cobertura
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-coverage
+          path: backend/coverage
+          retention-days: 7
+
+  frontend:
+    name: Frontend (lint · typecheck · build · test)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v5
+
+      - name: Instalar pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - name: Instalar dependencias
+        run: pnpm install --frozen-lockfile
+
+      - name: Preparar el frontend
+        run: cp frontend/.env.example frontend/.env
+
+      - name: Lint
+        run: pnpm --filter frontend lint
+
+      - name: Typecheck
+        run: pnpm --filter frontend typecheck
+
+      - name: Build
+        run: pnpm --filter frontend build
+
+      - name: Pruebas
+        run: pnpm --filter frontend test

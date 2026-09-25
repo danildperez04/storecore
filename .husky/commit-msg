@@ -1,0 +1,4 @@
+# Valida el formato del mensaje: Conventional Commits con los alcances del
+# dominio. Un commit invalido no pasa, y asi el historial queda legible.
+# Ver docs/06-convencion-de-commits.md
+pnpm exec commitlint --edit "$1"

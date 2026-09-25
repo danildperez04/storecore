@@ -1,0 +1,72 @@
+node_modules/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# Entorno
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Pruebas
+coverage/
+.nyc_output/
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# IDE
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+
+# Editores
+.eslintcache
+.prettiercache
+
+# Docker
+docker-compose.override.yml
+
+# Datos locales
+backend/uploads/
+data/
+*.sqlite
+*.db
+
+# Backups
+backups/
+*.sql
+*.sql.gz
+
+# Agentes locales
+AGENTS.local.md
+.opencode/
+.agents/
+
+# Pruebas locales
+.env.local
+.env.test
+.env.e2e
+backend/.env.e2e
+backend/coverage/
+frontend/coverage/
+
+# Certificados TLS (nunca en el repositorio)
+certbot/
+*.pem
+*.key

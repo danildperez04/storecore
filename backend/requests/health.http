@@ -1,0 +1,78 @@
+### Salud del servicio (sin autenticacion)
+GET http://localhost:3000/api/v1/health
+Accept: application/json
+
+### Documentacion interactiva
+GET http://localhost:3000/api/docs
+
+### Iniciar sesion como administrador
+# @name loginAdmin
+POST http://localhost:3000/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "Admin123"
+}
+
+### Iniciar sesion como cajero
+# @name loginCashier
+POST http://localhost:3000/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "username": "cajero",
+  "password": "Cajero123"
+}
+
+### Datos del usuario de la sesion
+GET http://localhost:3000/api/v1/auth/me
+Authorization: Bearer {{loginAdmin.response.body.accessToken}}
+Accept: application/json
+
+### Listar sucursales
+GET http://localhost:3000/api/v1/branches?page=1&limit=20
+Authorization: Bearer {{loginAdmin.response.body.accessToken}}
+Accept: application/json
+
+### Listar solo sucursales activas
+GET http://localhost:3000/api/v1/branches?isActive=true
+Authorization: Bearer {{loginAdmin.response.body.accessToken}}
+Accept: application/json
+
+### Crear una sucursal (solo ADMIN)
+POST http://localhost:3000/api/v1/branches
+Authorization: Bearer {{loginAdmin.response.body.accessToken}}
+Content-Type: application/json
+
+{
+  "code": "NORTE",
+  "name": "Sucursal Norte",
+  "address": "Calle Morelos 45",
+  "phone": "5551234568"
+}
+
+### La misma creacion con un cajero debe responder 403
+POST http://localhost:3000/api/v1/branches
+Authorization: Bearer {{loginCashier.response.body.accessToken}}
+Content-Type: application/json
+
+{
+  "code": "SUR",
+  "name": "No deberia crearse"
+}
+
+### Peticion sin token: debe responder 401
+GET http://localhost:3000/api/v1/auth/me
+Accept: application/json
+
+### Cambiar la contraseña
+PATCH http://localhost:3000/api/v1/auth/password
+Authorization: Bearer {{loginAdmin.response.body.accessToken}}
+Content-Type: application/json
+
+{
+  "currentPassword": "Admin123",
+  "newPassword": "NuevaClave123",
+  "confirmPassword": "NuevaClave123"
+}

@@ -1,0 +1,97 @@
+name: Historia de usuario
+description: Propón una funcionalidad nueva del backlog
+title: '[HU] '
+labels: ['mejora']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Cómo se llena esta historia
+
+        Formato: **Como** [rol], **quiero** [acción], **para** [beneficio].
+        Ejemplo: *Como cajero, quiero buscar por código de barras, para vender sin escribir.*
+
+  - type: textarea
+    id: historia
+    attributes:
+      label: Historia
+      description: Como [rol], quiero [acción], para [beneficio]
+      placeholder: Como cajero, quiero buscar un producto por código de barras, para venderlo rápido sin escribir su nombre.
+    validations:
+      required: true
+
+  - type: textarea
+    id: justificacion
+    attributes:
+      label: Justificación
+      description: Qué problema de negocio resuelve
+    validations:
+      required: true
+
+  - type: textarea
+    id: criterios
+    attributes:
+      label: Criterios de aceptación
+      description: Uno por línea, cada uno verificable
+      placeholder: |
+        - El sistema encuentra el producto al escribir su código de barras
+        - Si el código no existe, muestra un mensaje claro
+    validations:
+      required: true
+
+  - type: input
+    id: requerimiento
+    attributes:
+      label: Requerimientos relacionados
+      description: RF-nn y RNF-nn de docs/02-prd-mvp-moscow.md
+      placeholder: RF-21 / RNF-07
+    validations:
+      required: true
+
+  - type: dropdown
+    id: modulo
+    attributes:
+      label: Módulo afectado
+      options:
+        - auth
+        - users
+        - branches
+        - categories
+        - suppliers
+        - products
+        - inventory
+        - pos
+        - sales
+        - cash
+        - purchases
+        - customers
+        - reports
+    validations:
+      required: true
+
+  - type: dropdown
+    id: prioridad
+    attributes:
+      label: Prioridad MoSCoW
+      description: Según la sección 5 del PRD
+      options:
+        - Must
+        - Should
+        - Could
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tamano
+    attributes:
+      label: Tamaño estimado
+      description: Escala de Fibonacci
+      options:
+        - '1'
+        - '2'
+        - '3'
+        - '5'
+        - '8'
+        - '13'
+    validations:
+      required: true

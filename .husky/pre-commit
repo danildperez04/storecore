@@ -1,0 +1,3 @@
+# Solo se revisan los archivos preparados (staged), para que el hook sea rapido.
+# lint-staged ejecuta ESLint y Prettier sobre lo que se va a commitear.
+pnpm exec lint-staged

@@ -1,0 +1,86 @@
+import 'reflect-metadata';
+import { Logger, ValidationPipe } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import helmet from 'helmet';
+import type { NestExpressApplication } from '@nestjs/platform-express';
+import { AppModule } from './app.module.js';
+
+async function bootstrap(): Promise<void> {
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    bufferLogs: true,
+  });
+  const config = app.get(ConfigService);
+  const logger = new Logger('Bootstrap');
+
+  // Cabeceras HTTP seguras. CSP se relaja lo justo para permitir los estilos
+  // generados en línea por el tema de MUI.
+  app.use(
+    helmet({
+      contentSecurityPolicy: {
+        directives: {
+          defaultSrc: ["'self'"],
+          styleSrc: ["'self'", "'unsafe-inline'"],
+          imgSrc: ["'self'", 'data:', 'blob:'],
+          scriptSrc: ["'self'"],
+          connectSrc: ["'self'"],
+          fontSrc: ["'self'", 'data:'],
+        },
+      },
+      crossOriginEmbedderPolicy: false,
+    }),
+  );
+
+  const corsOrigins = config
+    .get<string>('CORS_ORIGIN', 'http://localhost:5173')
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+  app.enableCors({
+    origin: corsOrigins,
+    credentials: true,
+    methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
+  });
+
+  // El prefijo global hace que las rutas se sirvan en /api/v1/* (ver docs/05 §6).
+  app.setGlobalPrefix(config.get<string>('API_PREFIX', 'api/v1'));
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      // Descarta campos que el DTO no declara: evita mass assignment.
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
+      transformOptions: { enableImplicitConversion: false },
+    }),
+  );
+
+  const swaggerConfig = new DocumentBuilder()
+    .setTitle('StoreCore API')
+    .setDescription(
+      'API del sistema de gestión para tiendas de abarrotes: catálogo, inventario, ' +
+        'punto de venta, compras, crédito, reportes y cortes de caja.',
+    )
+    .setVersion('0.1.0')
+    .addBearerAuth({ type: 'http', scheme: 'bearer', bearerFormat: 'JWT' })
+    .addTag('Autenticación', 'Inicio de sesión y cambio de contraseña')
+    .addTag('Salud', 'Estado del servicio')
+    .addTag('Sucursales', 'Puntos de venta físicos')
+    .build();
+  const document = SwaggerModule.createDocument(app, swaggerConfig);
+  SwaggerModule.setup('api/docs', app, document, {
+    swaggerOptions: { persistAuthorization: true },
+  });
+
+  app.enableShutdownHooks();
+
+  const port = config.get<number>('PORT', 3000);
+  await app.listen(port, '0.0.0.0');
+
+  logger.log(`API escuchando en http://localhost:${port}/${config.get('API_PREFIX', 'api/v1')}`);
+  logger.log(`Documentación en http://localhost:${port}/api/docs`);
+  logger.log(`Entorno: ${config.get('NODE_ENV', 'development')}`);
+}
+
+void bootstrap();
