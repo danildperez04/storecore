@@ -21,7 +21,7 @@ COPY frontend ./frontend
 RUN pnpm --filter frontend build
 
 # ---------- Producción ----------
-FROM nginx:1.29-alpine AS production
+FROM nginx:1.31-alpine AS production
 RUN apk add --no-cache curl
 COPY frontend/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/frontend/dist /usr/share/nginx/html
