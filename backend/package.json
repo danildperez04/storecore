@@ -22,12 +22,12 @@
     "test:watch": "vitest",
     "test:cov": "vitest run --coverage",
     "test:e2e": "vitest run --config vitest.e2e.config.ts",
-    "migration:generate": "typeorm-ts-node-commonjs",
-    "migration:run": "typeorm-ts-node-commonjs migration:run -d src/database/data-source.ts",
-    "migration:revert": "typeorm-ts-node-commonjs migration:revert -d src/database/data-source.ts",
-    "migration:show": "typeorm-ts-node-commonjs migration:show -d src/database/data-source.ts",
-    "seed:run": "ts-node --transpile-only -r tsconfig-paths/register src/database/seeders/index.ts",
-    "user:create-admin": "ts-node --transpile-only -r tsconfig-paths/register src/database/scripts/create-admin.ts",
+    "migration:generate": "typeorm migration:generate -d dist/database/data-source.js",
+    "migration:run": "typeorm migration:run -d dist/database/data-source.js",
+    "migration:revert": "typeorm migration:revert -d dist/database/data-source.js",
+    "migration:show": "typeorm migration:show -d dist/database/data-source.js",
+    "seed:run": "node dist/database/seeders/seeders.cli.js",
+    "user:create-admin": "node dist/database/scripts/create-admin.js",
     "test:cov:all": "vitest run --coverage --coverage.thresholds.lines=0 && vitest run --config vitest.e2e.config.ts --coverage --coverage.thresholds.lines=0 --coverage.reporter=text-summary",
     "test:all": "vitest run && vitest run --config vitest.e2e.config.ts"
   },
@@ -78,9 +78,9 @@
     "dotenv": "^18.0.4"
   },
   "imports": {
-    "#config/*": "./dist/config/*.js",
-    "#common/*": "./dist/common/*.js",
-    "#database/*": "./dist/database/*.js",
-    "#modules/*": "./dist/modules/*.js"
+    "#config/*.js": "./dist/config/*.js",
+    "#common/*.js": "./dist/common/*.js",
+    "#database/*.js": "./dist/database/*.js",
+    "#modules/*.js": "./dist/modules/*.js"
   }
 }

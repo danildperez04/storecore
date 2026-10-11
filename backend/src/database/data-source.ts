@@ -4,7 +4,7 @@ import 'reflect-metadata';
 // `pnpm migration:run` funcione sin exportar variables a mano.
 import { config as loadEnv } from 'dotenv';
 import { DataSource } from 'typeorm';
-import { buildConfig } from '#config/configuration.js';
+import { buildConfig } from '../config/configuration.js';
 import { entities } from './entities.js';
 import { migrations } from './migrations/index.js';
 
