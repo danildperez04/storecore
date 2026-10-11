@@ -12,6 +12,7 @@ import { AuthModule } from '#modules/auth/auth.module.js';
 import { HealthModule } from '#modules/health/health.module.js';
 import { BranchesModule } from '#modules/branches/branches.module.js';
 import { CategoriesModule } from '#modules/categories/categories.module.js';
+import { SuppliersModule } from '#modules/suppliers/suppliers.module.js';
 
 /**
  * Módulo raíz de StoreCore.
@@ -36,6 +37,7 @@ import { CategoriesModule } from '#modules/categories/categories.module.js';
     HealthModule,
     BranchesModule,
     CategoriesModule,
+    SuppliersModule,
   ],
   providers: [
     { provide: APP_GUARD, useClass: ThrottlerGuard },
