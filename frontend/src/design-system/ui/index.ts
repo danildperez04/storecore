@@ -6,3 +6,5 @@ export { StatCard, type StatCardProps } from './StatCard';
 export { PageHeader, type PageHeaderProps } from './PageHeader';
 export { EmptyState, type EmptyStateProps } from './EmptyState';
 export { StatusBadge, type StatusBadgeProps, type StockLevel } from './StatusBadge';
+export { Autocomplete, type AutocompleteProps } from './Autocomplete';
+export { NumberField, type NumberFieldProps } from './NumberField';
