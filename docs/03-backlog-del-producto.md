@@ -62,15 +62,15 @@ administrativos), `Cajero` (quien cobra en mostrador).
 
 ## 5. Épica E-3 — Catálogo de productos
 
-| ID    | Historia                                                                                                                               | Puntos | Requerimientos | Estado    |
-| ----- | -------------------------------------------------------------------------------------------------------------------------------------- | ------ | -------------- | --------- |
-| HU-13 | Como Administrador, quiero gestionar categorías con subcategorías, para organizar el catálogo.                                         | 3      | RF-07          | PENDIENTE |
-| HU-14 | Como Administrador, quiero gestionar proveedores con sus datos de contacto, para saber a quién pedirle cada producto.                  | 3      | RF-08          | PENDIENTE |
-| HU-15 | Como Administrador, quiero crear productos con SKU, código de barras, unidad, precios y stock mínimo, para tener el catálogo completo. | 5      | RF-09, RF-10   | PENDIENTE |
-| HU-16 | Como Administrador, quiero editar y desactivar productos sin perder su historial, para no romper las ventas ya registradas.            | 3      | RF-12          | PENDIENTE |
-| HU-17 | Como usuario, quiero buscar productos por nombre, SKU o código de barras, para encontrarlos rápido.                                    | 5      | RF-11          | PENDIENTE |
-| HU-18 | Como usuario, quiero filtrar el catálogo por categoría, proveedor y estado, para reducir la lista a lo que me interesa.                | 3      | RF-11          | PENDIENTE |
-| HU-19 | Como Administrador, quiero fijar el stock inicial por sucursal al crear un producto, para empezar con inventario real.                 | 2      | RF-13          | PENDIENTE |
+| ID    | Historia                                                                                                                               | Puntos | Requerimientos | Estado   |
+| ----- | -------------------------------------------------------------------------------------------------------------------------------------- | ------ | -------------- | -------- |
+| HU-13 | Como Administrador, quiero gestionar categorías con subcategorías, para organizar el catálogo.                                         | 3      | RF-07          | EN CURSO |
+| HU-14 | Como Administrador, quiero gestionar proveedores con sus datos de contacto, para saber a quién pedirle cada producto.                  | 3      | RF-08          | EN CURSO |
+| HU-15 | Como Administrador, quiero crear productos con SKU, código de barras, unidad, precios y stock mínimo, para tener el catálogo completo. | 5      | RF-09, RF-10   | EN CURSO |
+| HU-16 | Como Administrador, quiero editar y desactivar productos sin perder su historial, para no romper las ventas ya registradas.            | 3      | RF-12          | EN CURSO |
+| HU-17 | Como usuario, quiero buscar productos por nombre, SKU o código de barras, para encontrarlos rápido.                                    | 5      | RF-11          | EN CURSO |
+| HU-18 | Como usuario, quiero filtrar el catálogo por categoría, proveedor y estado, para reducir la lista a lo que me interesa.                | 3      | RF-11          | EN CURSO |
+| HU-19 | Como Administrador, quiero fijar el stock inicial por sucursal al crear un producto, para empezar con inventario real.                 | 2      | RF-13          | EN CURSO |
 
 ## 6. Épica E-4 — Inventario y alertas
 
