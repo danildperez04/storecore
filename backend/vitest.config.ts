@@ -37,6 +37,7 @@ export default defineConfig({
         'src/main.ts',
         'src/database/data-source.ts',
         'src/database/run-migrations.ts',
+        'src/database/migrations/**',
         'src/database/seeders/**',
         'src/database/scripts/**',
         'src/test/**',

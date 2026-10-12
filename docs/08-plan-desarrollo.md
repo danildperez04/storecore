@@ -125,12 +125,12 @@ El dueño carga su inventario real en el sistema.
 
 ### 4.3 Criterios de aceptación
 
-- [ ] El dueño carga 50 productos reales sin ayuda técnica
-- [ ] Un producto se encuentra por nombre parcial, por SKU y por código de barras
-- [ ] El filtro por categoría reduce la lista correctamente
-- [ ] El precio de venta menor al de compra se rechaza con mensaje claro
-- [ ] Desactivar un producto con ventas lo oculta del catálogo sin romper el histórico
-- [ ] El formato de moneda muestra `$1,234.50`
+- [ ] El dueño carga 50 productos reales sin ayuda técnica _(pendiente: requiere UAT con el dueño)_
+- [x] Un producto se encuentra por nombre parcial, por SKU y por código de barras _(verificado: `products.e2e-spec.ts` contra PostgreSQL real)_
+- [x] El filtro por categoría reduce la lista correctamente _(verificado: `products.e2e-spec.ts`)_
+- [x] El precio de venta menor al de compra se rechaza con mensaje claro _(verificado: DTO + service + e2e, en las tres capas)_
+- [ ] Desactivar un producto con ventas lo oculta del catálogo sin romper el histórico _(pendiente: el módulo `sales` no existe hasta Sprint 3; hoy solo se verificó "desactivar sin ventas")_
+- [x] El formato de moneda muestra `$1,234.50` _(ya implementado y probado desde Sprint 0, `format.test.ts`)_
 
 ## 5. Sprint 2 — Inventario y alertas
 
@@ -385,9 +385,10 @@ antes de la lógica, y evita tener que refactorizar SQL cuando el modelo ya est�
 
 ## 13. Actualizaciones
 
-| Fecha       | Sprint | Cambio                    | Author           |
-| ----------- | ------ | ------------------------- | ---------------- |
-| 25 sep 2026 | S0     | Creación inicial del plan | Equipo StoreCore |
+| Fecha       | Sprint | Cambio                                                                                                                                                                                                            | Author           |
+| ----------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| 25 sep 2026 | S0     | Creación inicial del plan                                                                                                                                                                                         | Equipo StoreCore |
+| 11 oct 2026 | S1     | Implementadas las tareas 1-12 de §4.2 (categorías, proveedores, productos con stock inicial transaccional, búsqueda/filtros, catálogo con DataGrid, autocompletado); pendiente el commit/PR y el UAT con el dueño | Equipo StoreCore |
 
 ---
 

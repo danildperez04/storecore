@@ -383,14 +383,21 @@ conveniencia, no seguridad. Cada endpoint valida el rol en el servidor.
 
 Transacción obligatoria en toda operación que toque stock:
 
-| Operación       | Entidades dentro de la transacción                                             | Bloqueo                      |
-| --------------- | ------------------------------------------------------------------------------ | ---------------------------- |
-| Registrar venta | `sale`, `sale_item`, `product_stock`, `stock_movement`, `customer_transaction` | `product_stock` `FOR UPDATE` |
-| Anular venta    | `sale`, `product_stock`, `stock_movement`                                      | `product_stock` `FOR UPDATE` |
-| Recibir orden   | `supplier_order`, `supplier_order_item`, `product_stock`, `stock_movement`     | `product_stock` `FOR UPDATE` |
-| Ajustar stock   | `product_stock`, `stock_movement`                                              | `product_stock` `FOR UPDATE` |
-| Registrar abono | `customer_transaction`                                                         | `customer` `FOR UPDATE`      |
-| Cerrar caja     | `cash_shift`                                                                   | `cash_shift` abierto         |
+| Operación                        | Entidades dentro de la transacción                                             | Bloqueo                      |
+| -------------------------------- | ------------------------------------------------------------------------------ | ---------------------------- |
+| Crear producto con stock inicial | `product`, `product_stock`, `stock_movement`                                   | Ninguno (ver nota)           |
+| Registrar venta                  | `sale`, `sale_item`, `product_stock`, `stock_movement`, `customer_transaction` | `product_stock` `FOR UPDATE` |
+| Anular venta                     | `sale`, `product_stock`, `stock_movement`                                      | `product_stock` `FOR UPDATE` |
+| Recibir orden                    | `supplier_order`, `supplier_order_item`, `product_stock`, `stock_movement`     | `product_stock` `FOR UPDATE` |
+| Ajustar stock                    | `product_stock`, `stock_movement`                                              | `product_stock` `FOR UPDATE` |
+| Registrar abono                  | `customer_transaction`                                                         | `customer` `FOR UPDATE`      |
+| Cerrar caja                      | `cash_shift`                                                                   | `cash_shift` abierto         |
+
+> **Nota (RF-13):** crear un producto con stock inicial no necesita `SELECT ... FOR
+UPDATE` porque la fila de `product_stock` nace dentro de la misma transacción que
+> la crea — no existe ningún lector concurrente posible sobre una fila que todavía
+> no existía al empezar. El bloqueo aplica a partir de Sprint 2, cuando una venta o
+> un ajuste operan sobre una fila de `product_stock` ya preexistente.
 
 ### 6.3 Índice y caché
 

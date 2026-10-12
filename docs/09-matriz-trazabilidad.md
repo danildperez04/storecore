@@ -37,17 +37,18 @@ endpoint y prueba. Cumple el requisito de trazabilidad
 
 ## 3. Catálogo
 
-| RF    | HU    | Sprint | Endpoint                                       | Entidad             | Prueba                       | Tipo | Prioridad | Estado    |
-| ----- | ----- | ------ | ---------------------------------------------- | ------------------- | ---------------------------- | ---- | --------- | --------- |
-| RF-07 | HU-13 | S1     | `POST/GET/PATCH /api/v1/categories`            | `category`          | `categories.e2e-spec.ts`     | E    | Must      | PENDIENTE |
-| RF-08 | HU-14 | S1     | `POST/GET/PATCH /api/v1/suppliers`             | `supplier`          | `suppliers.e2e-spec.ts`      | E    | Must      | PENDIENTE |
-| RF-09 | HU-15 | S1     | `POST /api/v1/products`                        | `product`           | `products.e2e-spec.ts`       | E    | Must      | PENDIENTE |
-| RF-10 | HU-15 | S1     | Validación de DTO                              | `product`           | `create-product.dto.spec.ts` | U    | Must      | PENDIENTE |
-| RF-10 | HU-15 | S1     | `CHECK (sale_price > purchase_price)`          | `product`           | `products.e2e-spec.ts`       | E    | Must      | PENDIENTE |
-| RF-11 | HU-17 | S1     | `GET /api/v1/products?search=`                 | `product`           | `products.e2e-spec.ts`       | E    | Must      | PENDIENTE |
-| RF-11 | HU-18 | S1     | `GET /api/v1/products?categoryId=&supplierId=` | `product`           | `products.e2e-spec.ts`       | E    | Must      | PENDIENTE |
-| RF-12 | HU-16 | S1     | `DELETE /api/v1/products/:id` (lógico)         | `product.is_active` | `products.service.spec.ts`   | U    | Must      | PENDIENTE |
-| RF-13 | HU-19 | S1     | `POST /api/v1/products`                        | `product_stock`     | `products.service.spec.ts`   | U    | Must      | PENDIENTE |
+| RF    | HU    | Sprint | Endpoint                                                          | Entidad                    | Prueba                       | Tipo | Prioridad | Estado       |
+| ----- | ----- | ------ | ----------------------------------------------------------------- | -------------------------- | ---------------------------- | ---- | --------- | ------------ |
+| RF-07 | HU-13 | S1     | `POST/GET/PATCH /api/v1/categories`                               | `category`                 | `categories.e2e-spec.ts`     | E    | Must      | IMPLEMENTADO |
+| RF-08 | HU-14 | S1     | `POST/GET/PATCH /api/v1/suppliers`                                | `supplier`                 | `suppliers.e2e-spec.ts`      | E    | Must      | IMPLEMENTADO |
+| RF-09 | HU-15 | S1     | `POST /api/v1/products`                                           | `product`                  | `products.e2e-spec.ts`       | E    | Must      | IMPLEMENTADO |
+| RF-10 | HU-15 | S1     | Validación de DTO                                                 | `product`                  | `create-product.dto.spec.ts` | U    | Must      | IMPLEMENTADO |
+| RF-10 | HU-15 | S1     | `CHECK (sale_price > purchase_price)`                             | `product`                  | `products.e2e-spec.ts`       | E    | Must      | IMPLEMENTADO |
+| RF-11 | HU-17 | S1     | `GET /api/v1/products?search=`                                    | `product`                  | `products.e2e-spec.ts`       | E    | Must      | IMPLEMENTADO |
+| RF-11 | HU-18 | S1     | `GET /api/v1/products?categoryId=&supplierId=`                    | `product`                  | `products.e2e-spec.ts`       | E    | Must      | IMPLEMENTADO |
+| RF-11 | HU-17 | S1     | `GET /api/v1/products/autocomplete?q=` (contrato para el POS, S3) | `product`, `product_stock` | `products.service.spec.ts`   | U    | Must      | IMPLEMENTADO |
+| RF-12 | HU-16 | S1     | `DELETE /api/v1/products/:id` (lógico)                            | `product.is_active`        | `products.service.spec.ts`   | U    | Must      | IMPLEMENTADO |
+| RF-13 | HU-19 | S1     | `POST /api/v1/products`                                           | `product_stock`            | `products.e2e-spec.ts`       | E    | Must      | IMPLEMENTADO |
 
 ## 4. Inventario
 
@@ -167,21 +168,21 @@ endpoint y prueba. Cumple el requisito de trazabilidad
 
 ## 12. Estado Global
 
-| Métrica                               | Valor                                              |
-| ------------------------------------- | -------------------------------------------------- |
-| Requerimientos funcionales totales    | 51                                                 |
-| Requerimientos no funcionales totales | 16                                                 |
-| Reglas de negocio                     | 10                                                 |
-| Historias de usuario                  | 56                                                 |
-| Puntos estimados                      | 198                                                |
-| Sprints                               | 8 (S0 – S7)                                        |
-| Entidades de base de datos            | 14 (más 8 enums y 19 restricciones CHECK)          |
-| Módulos de backend                    | 12 carpetas (3 implementados, 9 con entidad lista) |
-| Módulos de frontend                   | 1 (auth) + layout + design system                  |
-| Pruebas automatizadas                 | 102 (61 unitarias, 18 e2e, 23 frontend)            |
-| Cobertura de líneas del backend       | 84.86 %                                            |
-| Requerimientos implementados          | 19 de 77                                           |
-| **Avance del MVP**                    | **9 % (34 de 198 puntos)**                         |
+| Métrica                               | Valor                                                                                                        |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| Requerimientos funcionales totales    | 51                                                                                                           |
+| Requerimientos no funcionales totales | 16                                                                                                           |
+| Reglas de negocio                     | 10                                                                                                           |
+| Historias de usuario                  | 56                                                                                                           |
+| Puntos estimados                      | 198                                                                                                          |
+| Sprints                               | 8 (S0 – S7)                                                                                                  |
+| Entidades de base de datos            | 14 (más 8 enums y 19 restricciones CHECK)                                                                    |
+| Módulos de backend                    | 12 carpetas (6 implementados: auth, health, branches, categories, suppliers, products · 6 con entidad lista) |
+| Módulos de frontend                   | 5 (auth, dashboard, categories, suppliers, productos) + layout + design system                               |
+| Pruebas automatizadas                 | 332 (133 unitarias backend, 172 e2e backend, 27 frontend)                                                    |
+| Cobertura de líneas del backend       | 76.75 % (unitaria, `pnpm test:cov`)                                                                          |
+| Requerimientos implementados          | 26 de 77                                                                                                     |
+| **Avance del MVP**                    | **29 % (58 de 198 puntos)**                                                                                  |
 
 ---
 
